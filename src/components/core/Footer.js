@@ -10,7 +10,8 @@ const Footer = () => {
                 <Row className="py-4">
                     <Col lg={4} md={6}>
                         <img src={logo} alt="logo" width={180} className="mb-3 avatar" variant="dark" />
-                        <p className="font-italic text-light">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
+                        <p className="font-italic text-light">Shop: 81 Ho Tung Mau,
+                  Ben Nghe Ward, <br />District 1, Ho Chi Minh City <br /></p>
                         <ul className="list-inline mt-4">
                             <li className="list-inline-item"><a href="#" target="_blank" title="twitter"><i className="fa fa-twitter" /></a></li>
                             <li className="list-inline-item"><a href="#" target="_blank" title="facebook"><i className="fa fa-facebook" /></a></li>
@@ -39,7 +40,7 @@ const Footer = () => {
                     </Col>
                     <Col lg={4} md={6}>
                         <h6 className="text-uppercase font-weight-bold mb-4 text-light">Newsletter</h6>
-                        <p className="text-light mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. At itaque temporibus.</p>
+                        <p className="text-light mb-4">UPDATE PROMOTION INFORMATION</p>
                         <div className="p-1 rounded border">
                             <div className="input-group">
                                 <input type="email" placeholder="Enter your email address" aria-describedby="button-addon1" className="form-control border-0 shadow-0" />

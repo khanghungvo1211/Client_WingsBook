@@ -25,15 +25,6 @@ const BookHomeScreen = ({ match }) => {
     return (
         <>
             <Meta />
-            <Breadcrumb>
-                <Breadcrumb.Item href="/">Home</Breadcrumb.Item>
-                <Breadcrumb.Item href="/book" active>
-                    Book
-                </Breadcrumb.Item>
-            </Breadcrumb>
-
-            <TopRatedBooks />
-            <Route render={({ history }) => <Filter history={history} />} />
             <h1 className="mt-2 text-center">Latest Book</h1>
             <div>
                 <Dropdown className="text-left">

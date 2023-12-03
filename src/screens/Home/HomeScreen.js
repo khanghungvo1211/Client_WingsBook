@@ -13,7 +13,7 @@ const HomeScreen = ({ match }) => {
                     <Col className="p-5 text-white">
                         <h1>Welcome to WingsBook: Your Premier Online Bookstore!</h1>
                         <p>Welcome to you with the best bookstore online</p>
-                        <Link>
+                        <Link to="/book">
                             <Button className="btn btn-theme">
                                 Go to shop <i className="fas fa-shopping-cart"></i>
                             </Button>
