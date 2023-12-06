@@ -18,22 +18,21 @@ const TopAuthors = () => {
     return loading ? (
         <Loader />
     ) : error ? (
-        <Message variant='danger' >{error}</Message>
-    ) : (
+        <Message variant='danger'>{error}</Message>
+    ) : Array.isArray(authors) ? (
         <Jumbotron className="bg-top-author">
             <h2 className="text-center p-3 text-light">Top Authors</h2>
             <Container>
                 <Row>
                     {authors.map((author) => (
-                        <Col sm={12} md={6} lg={3}>
-                            <blockquote className="blockquote mb-0 text-center card-body" key={author._id}>
+                        <Col sm={12} md={6} lg={3} key={author._id}>
+                            <blockquote className="blockquote mb-0 text-center card-body">
                                 <div className="author-top">
                                     <Image src={author.portrait} fluid className="author-img border" />
                                     <div className="overlay">
                                         <Link to={`/author/${author._id}`}>
                                             <div className="author-text">
-                                                <h4>
-                                                    {author.name}</h4>
+                                                <h4>{author.name}</h4>
                                             </div>
                                         </Link>
                                     </div>
@@ -44,6 +43,8 @@ const TopAuthors = () => {
                 </Row>
             </Container>
         </Jumbotron>
+    ) : (
+        <Message variant='info'>No authors available.</Message>
     );
 }
 
