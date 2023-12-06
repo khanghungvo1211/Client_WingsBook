@@ -37,16 +37,19 @@ const BookHomeScreen = ({ match }) => {
                 <Loader />
             ) : error ? (
                 <Message variant='danger'>{error}</Message>
-            ) : books && Array.isArray(books) ? (
+            ) : (
                 <>
-                    {/* Display books */}
-                    <Row>
-                        {books.map((book) => (
-                            <Col key={book._id} sm={12} md={6} lg={3}>
-                                <Book book={book} />
-                            </Col>
-                        ))}
-                    </Row>
+                    {books ? (
+                        <Row>
+                            {books.map((book) => (
+                                <Col key={book._id} sm={12} md={6} lg={3}>
+                                    <Book book={book} />
+                                </Col>
+                            ))}
+                        </Row>
+                    ) : (
+                        <Message variant='info'>No books available.</Message>
+                    )}
                     {/* Pagination */}
                     <Paginate
                         category="books"
@@ -55,8 +58,6 @@ const BookHomeScreen = ({ match }) => {
                         query={`sort=${sort}`}
                     />
                 </>
-            ) : (
-                <Message variant='info'>No books available.</Message>
             )}
         </>
     );
