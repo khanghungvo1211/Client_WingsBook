@@ -2,7 +2,7 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
-  "proxy": process.env.BACKEND_URL,
+  "proxy": "https://bookapi-55u1.onrender.com",
   "dependencies": {
     "@react-google-maps/api": "^2.2.0",
     "@testing-library/jest-dom": "^5.11.4",
