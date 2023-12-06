@@ -23,7 +23,7 @@ const TopRatedBooks = () => {
                     <Loader />
                 ) : error ? (
                     <Message variant='danger'>{error}</Message>
-                ) : (
+                ) : Array.isArray(books) && books.length > 0 ? (
                     <Carousel>
                         {books.map((book) => (
                             <Carousel.Item key={book._id}>
@@ -58,6 +58,8 @@ const TopRatedBooks = () => {
                             </Carousel.Item>
                         ))}
                     </Carousel>
+                ) : (
+                    <Message variant='info'>No books available.</Message>
                 )}
             </Container>
         </div>
