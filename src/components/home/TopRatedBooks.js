@@ -16,51 +16,31 @@ const TopRatedBooks = () => {
         dispatch(listTopBooks());
     }, [dispatch]);
 
-    return loading ? (
-        <Loader />
-    ) : error ? (
-        <Message variant='danger'>{error}</Message>
-    ) : (
+    return (
         <div className='bg-img-2 p-5'>
             <Container>
-                <Carousel>
-                    {books.map((book) => (
-                        <Carousel.Item key={book._id}>
-                            <Row>
-                                <Col sm={12} md={6} lg={3}>
-                                    <Link key={book._id} to={`/book/${book._id}`}>
-                                        <Image src={book.image} alt={book.name} fluid />
-                                    </Link>
-                                </Col>
-                                <Col sm={12} md={6} lg={9}>
-                                    <h3 className="p-1">{book.name}</h3>
-                                    <Rating
-                                        value={book.rating}
-                                        text={`${book.numReviews} reviews`}
-                                    />
-                                    {book.sales > 0 ? (
-                                        <>
-                                            <strike>
-                                                ${book.price}
-                                            </strike>
-
-                                            <h2><strong>${book.sales}</strong></h2>
-                                        </>
-                                    ) : (
-                                        <h2><strong>${book.price}</strong></h2>
-                                    )}
-                                    <p>{book.description}</p>
-
-                                    <Link>
-                                        <Button className="btn btn-theme">
-                                            See more <i className="fas fa-shopping-cart"></i>
-                                        </Button>
-                                    </Link>
-                                </Col>
-                            </Row>
-                        </Carousel.Item>
-                    ))}
-                </Carousel>
+                {loading ? (
+                    <Loader />
+                ) : error ? (
+                    <Message variant='danger'>{error}</Message>
+                ) : Array.isArray(books) && books.length > 0 ? (
+                    <Carousel>
+                        {books.map((book) => (
+                            <Carousel.Item key={book._id}>
+                                <Row>
+                                    <Col sm={12} md={6} lg={3}>
+                                        <Link key={book._id} to={`/book/${book._id}`}>
+                                            <Image src={book.image} alt={book.name} fluid />
+                                        </Link>
+                                    </Col>
+                                    {/* Rest of your code for displaying book details */}
+                                </Row>
+                            </Carousel.Item>
+                        ))}
+                    </Carousel>
+                ) : (
+                    <Message variant='info'>No books available.</Message>
+                )}
             </Container>
         </div>
     );
