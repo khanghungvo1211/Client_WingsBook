@@ -8,7 +8,6 @@ import "src/assets/styles/author.css";
 
 const AuthorListScreen = ({ match }) => {
     const keyword = match.params.keyword;
-
     const pageNumber = match.params.pageNumber || 1;
 
     const dispatch = useDispatch();
@@ -17,7 +16,6 @@ const AuthorListScreen = ({ match }) => {
 
     useEffect(() => {
         dispatch(listAuthors(keyword, pageNumber));
-
     }, [dispatch, keyword, pageNumber]);
 
     return (
@@ -43,27 +41,32 @@ const AuthorListScreen = ({ match }) => {
             ) : error ? (
                 <Message variant='danger'>{error}</Message>
             ) : (
-                <Row>
-                    {authors.map((author) => (
-                        <Col key={author._id} sm={12} md={6} lg={4} className="text-center">
-                            <div className="p-3">
-                                <Image className="author" src={author.portrait} width="200" roundedCircle />
-
-                                <Link to={`/author/${author._id}`}>
-                                    <h5 className="title text-center mt-3">
-                                        <strong>{author.name}</strong>
-                                    </h5>
-                                </Link>
-                            </div>
-                        </Col>
-                    ))}
-                    <Paginate
-                        category="authors"
-                        pages={pages}
-                        page={page}
-                        keyword={keyword ? keyword : ''}
-                    />
-                </Row>
+                <>
+                    {authors && authors.length > 0 ? (
+                        <Row>
+                            {authors.map((author) => (
+                                <Col key={author._id} sm={12} md={6} lg={4} className="text-center">
+                                    <div className="p-3">
+                                        <Image className="author" src={author.portrait} width="200" roundedCircle />
+                                        <Link to={`/author/${author._id}`}>
+                                            <h5 className="title text-center mt-3">
+                                                <strong>{author.name}</strong>
+                                            </h5>
+                                        </Link>
+                                    </div>
+                                </Col>
+                            ))}
+                            <Paginate
+                                category="authors"
+                                pages={pages}
+                                page={page}
+                                keyword={keyword ? keyword : ''}
+                            />
+                        </Row>
+                    ) : (
+                        <Message variant="info">No authors found.</Message>
+                    )}
+                </>
             )}
         </>
     );
